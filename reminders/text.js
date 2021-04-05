@@ -1,4 +1,4 @@
-const { twilioAPI } = require('./_api');
+import { twilioAPI } from './_api';
 
 const twilioNumber = '+18588793879'
 const ryanNumber = '+14384086340'

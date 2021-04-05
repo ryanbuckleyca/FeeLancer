@@ -1,23 +1,38 @@
-const { clicksendEmailAPI } = require('./_api');
+import { clicksendEmailAPI } from './_api';
 
-const clicksendEmail = 'test2@test.com'
+const clicksendEmail = 'ryaniscloset@hotmail.com'
 
 // SEND EMAIL
 const emailRecipient = {
   email: clicksendEmail,
-  name: "John doe"
+  name: "Ryan Buckley"
 }
+
+// add emails from:
+// https://dashboard.clicksend.com/messaging-settings/email/from-addresses
+// [ ] billsarebillsarebills@protonmail.ch
+// [ ] debtrecoverycrew@protonmail.com
+// [ ] overdueaccounts@aol.com
+// [ ] invoicecollectionsteam@yahoo.com
+// [ ] invoicecollectionsteam@outlook.com
+// [ ] pleasecomply@yandex.com
+// [ ] mrsherlockholmes@mail.com
+// [ ] jessicafletcher@mailfence.com
+// *@tutanota.com
+// *@excite.com
+
 const emailFrom = {
-  emailAddressId: 12137,
-  name: "john"
+  // @TODO: get email IDs from API
+  emailAddressId: 15721,
+  name: "some name that I invented"
 }
-const attachment = {
-  content: "ZmlsZSBjb250ZW50cw==",
-  type: "text/plain",
-  filename: "text.txt",
-  disposition: "attachment",
-  contentId: "text"
-}
+// const attachment = {
+//   content: "ZmlsZSBjb250ZW50cw==",
+//   type: "text/plain",
+//   filename: "text.txt",
+//   disposition: "attachment",
+//   contentId: "text"
+// }
 const email = {
   to: [emailRecipient],
   cc: [emailRecipient],
@@ -25,7 +40,7 @@ const email = {
   from: emailFrom,
   subject: "subject",
   body: "body",
-  attachments: [attachment]
+  // attachments: [attachment]
 }
 
 clicksendEmailAPI.emailSendPost(email)

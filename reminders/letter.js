@@ -1,4 +1,4 @@
-const { clicksendLetterAPI } = require('./_api');
+import { clicksendLetterAPI } from './_api';
 
 // CLICKSEND LETTER COST
 

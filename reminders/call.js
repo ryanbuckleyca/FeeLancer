@@ -1,11 +1,14 @@
-const { twilioAPI } = require('./_api');
+import { twilioAPI } from './_api';
+import { differenceInDays } from 'date-fns';
 
 const twilioNumber = '+18588793879'
 const ryanNumber = '+14384086340'
 
+const daysLate = differenceInDays(new Date(), new Date('2020-01-09'))
+
 twilioAPI.calls
   .create({
-    twiml: '<Response><Say>Ahoy there!</Say></Response>',
+    twiml: `<Response><Say>This is a collections message! Your invoice with Ryan Buckley for 546 dollars is now ${daysLate} late. </Say></Response>`,
     from: twilioNumber,
     to: ryanNumber
    })
