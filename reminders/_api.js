@@ -1,5 +1,5 @@
-import { resolve } from 'path';
-import { PostLetterApi, TransactionalEmailApi } from 'clicksend/api.js';
+const { resolve } = require('path');
+const { PostLetterApi, TransactionalEmailApi } = require('clicksend/api.js');
 
 require('dotenv').config({
   path: resolve(__dirname, '../.env')

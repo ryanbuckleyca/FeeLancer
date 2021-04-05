@@ -7,7 +7,6 @@ require('dotenv').config({
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 
-const appOrigin = process.env.APP_ORIGIN;
 const audience = process.env.AUTH0_AUDIENCE;
 const issuer = process.env.AUTH0_ISSUER;
 

@@ -1,5 +1,5 @@
-import { twilioAPI } from './_api';
-import { differenceInDays } from 'date-fns';
+const { twilioAPI } = require('./_api');
+const { differenceInDays } = require('date-fns')
 
 const twilioNumber = '+18588793879'
 const ryanNumber = '+14384086340'

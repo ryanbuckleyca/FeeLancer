@@ -74,7 +74,7 @@ router.route("/:id")
   .delete(async (req, res) => {
     console.log('destroy client called with req.params.id:', req.params.id);
     try {
-      const destroyResult = await db.Client.destroy({
+      await db.Client.destroy({
         where: { id: req.params.id }
       })
       .then(res => {

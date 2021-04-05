@@ -1,8 +1,7 @@
-import { clicksendEmailAPI } from './_api';
+const { clicksendEmailAPI } = require('./_api');
 
 const clicksendEmail = 'ryaniscloset@hotmail.com'
 
-// SEND EMAIL
 const emailRecipient = {
   email: clicksendEmail,
   name: "Ryan Buckley"

@@ -1,6 +1,4 @@
-import { clicksendLetterAPI } from './_api';
-
-// CLICKSEND LETTER COST
+const { clicksendLetterAPI } = require('./_api');
 
 const recipient = {
   returnAddressId: 0,
