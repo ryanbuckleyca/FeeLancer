@@ -1,69 +1,66 @@
-const { clicksendEmailAPI } = require('./_api');
+const { clicksendEmailAPI, daysLate } = require('./_api');
+const { isMonday } = require('date-fns');
 const faker = require('faker')
-const words = require('WORDS.json');
+const words = require('../src/scripts/WORDS.json');
 
-// add emails from:
-// https://dashboard.clicksend.com/messaging-settings/email/from-addresses
-// [ ] billsarebillsarebills@protonmail.ch
-// [ ] debtrecoverycrew@protonmail.com
-// [ ] overdueaccounts@aol.com
-// [ ] invoicecollectionsteam@yahoo.com
-// [ ] invoicecollectionsteam@outlook.com
-// [ ] pleasecomply@yandex.com
-// [ ] mrsherlockholmes@mail.com
-// [ ] recoveryteam@mail.com
-// [ ] jessicafletcher@mailfence.com
-// *@tutanota.com
-// *@excite.com
+const CLIENTS = JSON.parse(process.env.CLIENTS)
 
-const emailIds = [15793, 15794, 15795, 15797, 15798, 15800, 15801]
-const randomEmail = Math.floor(Math.random() * emailIds.length)
+if (!isMonday) return false
 
-const getWord = (key) => {
-  const rand = Math.floor(Math.random() * words[key].length)
-  return words[key][rand]
-}
+CLIENTS.forEach((CLIENT) => {
+  
+  // @TODO: get email IDs from API
+  // add emails from: https://dashboard.clicksend.com/messaging-settings/email/from-addresses
+  // *protonmail.ch
+  // *aol.com
+  // *yahoo.com
+  // *outlook.com
+  // *yandex.com
+  // *mail.com
+  // *@tutanota.com
+  // *@excite.com
 
-// @TODO: get email IDs from API
-const USER = {
-  emailAddressId: emailIds[randomEmail],
-  name: faker.name.firstName() + ' ' + faker.name.lastName()
-}
+  const emailIds = [15793, 15794, 15797, 15798, 15799, 15800, 15801] //15795 aol
+  const randomEmail = Math.floor(Math.random() * emailIds.length)
 
-const CLIENT = {
-  name: faker.name.firstName() + ' ' + faker.name.lastName(),
-  email: 'ryanbuckley@gmail.com',
-  dueDate: new Date('January 8, 2020')
-}
+  const getWord = (key) => {
+    const rand = Math.floor(Math.random() * words[key].length)
+    return words[key][rand]
+  }
 
-const message = `
-${getWord('greeting')} ${CLIENT.name}
-\n\n
-${getWord('opening')} ${getWord('who')}, I am ${getWord('action')} to ${getWord('inform')} it’s been ${TIME_SINCE} since the initial ${getWord('invoice')} was ${getWord('sent')}. 
-Please ${getWord('respond')} to the ${getWord('contact')} in the ${getWord('attachment')} if you ${getWord('need')} ${getWord('help')}.
-\n\n
-${getWord('thanks')}
-\n
-${USER.name}
-`
+  const USER = {
+    emailAddressId: emailIds[randomEmail],
+    name: faker.name.firstName() + ' ' + faker.name.lastName()
+  }
 
-// const attachment = {
-//   content: "ZmlsZSBjb250ZW50cw==",
-//   type: "text/plain",
-//   filename: "text.txt",
-//   disposition: "attachment",
-//   contentId: "text"
-// }
+  const message = `
+    ${getWord('greeting')} ${CLIENT.name.split(' ')[0]}
+    <br /><br />
+    ${getWord('opening')} ${getWord('who')}, I am ${getWord('action')} to ${getWord('inform')} it’s been ${daysLate} days since the initial ${getWord('invoice')} was ${getWord('sent')}.
+    Please ${getWord('respond')} to the ${getWord('contact')} in the ${getWord('attachment')} if you ${getWord('need')} ${getWord('help')}.
+    <br /><br />
+    ${getWord('thanks')},
+    <br />
+    ${USER.name}
+  `
 
-const email = {
-  to: [CLIENT],
-  bcc: [{ name: 'Ryan Buckley', email: 'ryanbuckley@gmail.com' }],
-  from: USER.email,
-  subject: getWord('subject'),
-  body: message,
-  // attachments: [attachment]
-}
+  // const attachment = {
+  //   content: "ZmlsZSBjb250ZW50cw==",
+  //   type: "text/plain",
+  //   filename: "text.txt",
+  //   disposition: "attachment",
+  //   contentId: "text"
+  // }
 
-clicksendEmailAPI.emailSendPost(email)
-  .then(res => console.log('send email res:', res.body.response_msg))
-  .catch(err => console.error('send email err:', err.body));
+  const email = {
+    to: [CLIENT],
+    from: USER,
+    subject: getWord('subject'),
+    body: message,
+    // attachments: [attachment]
+  }
+
+  clicksendEmailAPI.emailSendPost(email)
+    .then(res => console.log('send email res:', res.body.response_msg))
+    .catch(err => console.error('send email err:', err.body));
+})

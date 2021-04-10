@@ -9,7 +9,7 @@
   "sent": ["delivered", "sent", "given to you", "handed over", "provided"],
   "respond": ["get in touch", "reach out", "drop a line", "call or write"],
   "contact": ["contact information", "client info", "phone or email"],
-  "attachment": ["following attachment", "attached pdf", "included file", "following pdf"],
+  "attachment": ["invoice you received", "bill that was provided to you", "client's payment document", "schedule of work"],
   "need": ["would like", "need", "want"],
   "help": ["to discuss options", "additional information", "assistance", "to chat"],
   "thanks": ["Thank you", "Thanks", "Best wishes", "Kindly"]
