@@ -1,13 +1,11 @@
-const { twilioAPI } = require('./_api');
+const { twilioAPI, daysLate } = require('./_api');
 
-const twilioNumber = '+18588793879'
+const twilioNumber = '+14049484569'
 const ryanNumber = '+14384086340'
-
-const date = new Date()
 
 twilioAPI.messages
   .create({
-    body: `Today is ${date}`,
+    body: `This is a collections message: your invoice with Ryan Buckley for $546 is now ${daysLate} days late. You can stop these daily reminders by paying your invoice.`,
     from: twilioNumber,
     to: ryanNumber
   })
