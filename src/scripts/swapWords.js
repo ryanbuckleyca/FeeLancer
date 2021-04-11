@@ -1,5 +1,5 @@
 const faker = require('faker')
-const words = require('WORDS.json');
+const words = require('./WORDS.json');
 
 let loop;
 let i = 1
