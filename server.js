@@ -8,6 +8,7 @@ const express = require('express');
 const app = express();
 
 const checkJwt = require('./routes/authenticate');
+const callBack = require('./routes/callBack');
 const secureRoute = require('./routes/secure');
 const userRoutes = require('./routes/users');
 const clientRoutes = require('./routes/clients');
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // ROUTES (secured ones require checkJwt middleware)
 app.use("/api/secure", checkJwt, secureRoute);
+app.use("/api/callBack", callBack);
 app.use("/api/users", userRoutes);
 app.use("/api/clients", clientRoutes);
 app.use("/api/contracts", contractRoutes);
