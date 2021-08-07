@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PrivateRoute from './components/private-route';
 import Modal from './components/modal';
-import CallBack from './components/callBack';
 import Alerts from './components/alerts';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
