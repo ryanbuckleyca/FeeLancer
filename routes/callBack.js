@@ -6,7 +6,7 @@ router
   // UPDATE/NEW USER
   .put(async (req, res, next) => {
     console.log('callBack called with POST req.body:', req.body);
-  });
+  })
   .get(async (req, res, next) => {
     console.log('callBack called with GET req.body:', req.body);
   });
