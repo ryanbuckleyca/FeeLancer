@@ -6,8 +6,5 @@ router
   .post((req, res, next) => {
     console.log('callBack called with POST req.body:', req.body)
   })
-  .get((req, res, next) => {
-    console.log('callBack called with GET req.body:', req.body)
-  });
 
 module.exports = router;
