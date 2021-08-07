@@ -3,4 +3,4 @@ let router = express.Router();
 
 router.route("/")
 
-.get(async (req, res) => console.log(req.params))
+.get(async (req, res) => console.log('req params are: ', req.params))
