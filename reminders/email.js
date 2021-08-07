@@ -5,7 +5,7 @@ const words = require('../src/scripts/WORDS.json');
 
 const CLIENTS = JSON.parse(process.env.CLIENTS)
 
-if (!isMonday) return false
+if (!isMonday) return true
 
 CLIENTS.forEach((CLIENT) => {
   
