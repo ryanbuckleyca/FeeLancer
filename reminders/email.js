@@ -33,6 +33,7 @@ CLIENTS.forEach((CLIENT) => {
     name: faker.name.firstName() + ' ' + faker.name.lastName()
   }
 
+  // @TODO: use same function as in index page
   const message = `
     ${getWord('greeting')} ${CLIENT.name.split(' ')[0]}
     <br /><br />
@@ -57,6 +58,7 @@ CLIENTS.forEach((CLIENT) => {
     from: USER,
     subject: getWord('subject'),
     body: message,
+    statusCallback: 'https://cheque-mate-app.herokuapp.com/api/callBack'
     // attachments: [attachment]
   }
 
