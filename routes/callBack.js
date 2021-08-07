@@ -3,7 +3,7 @@ let router = express.Router();
 
 router
   .route("/")
-  .put((req, res, next) => {
+  .post((req, res, next) => {
     console.log('callBack called with POST req.body:', req.body)
   })
   .get((req, res, next) => {
