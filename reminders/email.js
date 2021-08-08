@@ -58,7 +58,6 @@ CLIENTS.forEach((CLIENT) => {
     from: USER,
     subject: getWord('subject'),
     body: message,
-    statusCallback: 'https://cheque-mate-app.herokuapp.com/api/callBack'
     // attachments: [attachment]
   }
 
