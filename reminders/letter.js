@@ -1,4 +1,7 @@
 const { clicksendLetterAPI } = require('./_api');
+const { isFirstDayOfMonth } = require('date-fns');
+
+if (!isFirstDayOfMonth(new Date())) return false
 
 const CLIENTS = JSON.parse(process.env.CLIENTS)
 

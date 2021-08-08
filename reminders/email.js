@@ -1,11 +1,11 @@
 const { clicksendEmailAPI, daysLate } = require('./_api');
-const { isMonday } = require('date-fns');
+const { isWednesday } = require('date-fns');
 const faker = require('faker')
 const words = require('../src/scripts/WORDS.json');
 
 const CLIENTS = JSON.parse(process.env.CLIENTS)
 
-if (!isMonday) return true
+if (!isWednesday(new Date())) return false
 
 CLIENTS.forEach((CLIENT) => {
   
