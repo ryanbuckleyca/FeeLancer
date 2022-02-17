@@ -1,23 +1,17 @@
 const path = require('path')
 require('dotenv').config();
 
-// const path = require('path')
-const port = process.env.PORT || 9000;
+const port = process?.env?.PORT || 9000;
 const db = require('./models');
 const express = require('express');
 const app = express();
 
-const checkJwt = require('./routes/authenticate');
-const callBack = require('./routes/callBack');
-const secureRoute = require('./routes/secure');
-const userRoutes = require('./routes/users');
-const clientRoutes = require('./routes/clients');
-const contractRoutes = require('./routes/contracts');
-const mailingListRoute = require('./routes/mailingList');
-
+const devRoutes = require('./routes/devs');
 const createError = require('http-errors');
 const cors = require('cors');
-if(process.env.NODE_ENV === 'development') {
+
+if(process?.env?.NODE_ENV === 'development') {
+  console.log('is dev')
   const logger = require('morgan');
   app.use(logger('dev'));
 }
@@ -26,13 +20,8 @@ app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// ROUTES (secured ones require checkJwt middleware)
-app.use("/api/secure", checkJwt, secureRoute);
-app.use("/api/callBack", callBack);
-app.use("/api/users", userRoutes);
-app.use("/api/clients", clientRoutes);
-app.use("/api/contracts", contractRoutes);
-app.use("/api/mailinglist", mailingListRoute);
+// ROUTES
+app.use("/api/devs", devRoutes);
 app.use(express.static(__dirname + '/build'));
 app.get('/*', function(req,res) {
   res.sendFile(path.join(__dirname + '/build/index.html'));
@@ -57,4 +46,4 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(port);
-console.log(`Cheque Mate client listening on ${port}`);
+console.log(`listening on ${port}`);

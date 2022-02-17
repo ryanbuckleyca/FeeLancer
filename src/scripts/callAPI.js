@@ -6,15 +6,22 @@ const callAPI = async (address, method = 'GET', params = null, headers = json) =
     method: method,
     headers: headers
   }
-  if(method !== 'GET')
+
+  if(method !== 'GET') {
     attrs.body = JSON.stringify(params)
+  }
 
   try {
     // TODO: change routes to handle null responses from db calls
     const res = await fetch(`${url}${address}`, attrs)
-    const data = await res.json()
-    if(data.error) throw(data.error)
-    return data
+    console.log({res})
+    if (!res.ok) {
+        console.log('res not okay')
+        console.log({res}, res.status)
+        throw new Error(res.status);
+    }
+    console.log('res is ok')
+    return res.json();
   } catch(err) {
     // TODO: handle errors
     // returning null leads to unexpected results

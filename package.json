@@ -1,5 +1,5 @@
 {
-  "name": "Cheque-Mate",
+  "name": "vention-test",
   "version": "0.0.0",
   "engines": {
     "node": "10.20.x",
@@ -13,20 +13,19 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.1.0",
-    "@types/node": "^14.14.9",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^14.18.12",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
     "bluebird": "^3.7.2",
-    "clicksend": "^5.0.37",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
-    "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "express-jwt": "^6.0.0",
     "faker": "^5.1.0",
     "http": "0.0.1-security",
     "http-errors": "~1.6.3",
-    "jwks-rsa": "^1.10.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.6",
     "pg": "^8.3.3",
@@ -38,8 +37,7 @@
     "react-select": "^3.1.0",
     "request": "^2.88.2",
     "sequelize": "^6.3.5",
-    "twilio": "^3.52.0",
-    "typescript": "^4.1.2"
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
     "debug": "~2.6.9",

@@ -2,8 +2,8 @@
   "development": {
     "client": "pg",
     "host": "localhost",
-    "database": "cheque-mate",
-    "username": "apinrise",
+    "database": "vention-test",
+    "username": "ry",
     "password": null,
     "dialect": "postgres"
   },
